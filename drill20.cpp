@@ -1,0 +1,69 @@
+#include "std_lib_facilities.h"
+
+template<typename Iter1, typename Iter2>
+Iter2 my_copy(Iter1 f1, Iter1 e1, Iter2 f2)
+{
+
+	while (f1 != e1)
+	{
+		*f2 = *f1;
+		++f1;
+		++f2;
+	}
+
+	return f2;
+}
+
+
+
+int main()
+{
+array<int, 10> a = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+vector<int> v{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+list<int> l{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+array<int, 10> a2 = a;
+
+	vector<int> v2 = v;
+
+	list<int> l2 = l;
+
+	for (int& i : a)
+		i += 2;
+
+	for (int& i : v)
+		i += 3;
+
+	for (int& i : l)
+		i += 5;
+
+my_copy(a.begin(), a.end(), v2.begin());
+	if (a[0] != v2[0])
+		cout << "array and vector are not the same!" << endl;
+
+my_copy(l.begin(), l.end(), a2.begin());
+	if (*(l.begin()) != a2[0])
+		cout << "list and array are not the same!" << endl;
+
+
+auto v_result = find(begin(v), end(v), 3);
+	if (v_result != end(v))
+		cout << "Found 3 in the vector and it's position is :  " << distance(v.begin(), v_result) << endl;
+	else
+		cout << " 3 Not Found in the vector" << endl;
+
+auto l_result = find(begin(l), end(l), 27);
+	if (l_result != end(l))
+		cout << "Found 27 in the list and it's position is :  " << distance(l.begin(), l_result) << endl;
+	else
+		cout << "27 Not Found in the list" << endl;
+
+
+
+
+
+
+	return 0;
+}
