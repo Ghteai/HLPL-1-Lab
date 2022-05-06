@@ -26,9 +26,9 @@ list<int> l{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 array<int, 10> a2 = a;
 
-	vector<int> v2 = v;
+vector<int> v2 = v;
 
-	list<int> l2 = l;
+list<int> l2 = l;
 
 	for (int& i : a)
 		i += 2;
